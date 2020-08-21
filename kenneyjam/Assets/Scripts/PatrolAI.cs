@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour
+public class PatrolAI : MonoBehaviour
 {
     public List<EnemyWaypoint> Waypoints;
 
@@ -15,7 +15,8 @@ public class EnemyAI : MonoBehaviour
     {
         _aiPath = GetComponent<AIPath>();
         _aiDestinationSetter = GetComponent<AIDestinationSetter>();
-        _aiDestinationSetter.target = Waypoints[0].transform;
+        if (Waypoints.Count > 0)
+            _aiDestinationSetter.target = Waypoints[0].transform;
     }
 
     void Update()
