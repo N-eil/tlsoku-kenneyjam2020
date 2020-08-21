@@ -6,10 +6,10 @@ public class Player : MonoBehaviour
 {
 	public float speed = 25f;
 	public Rigidbody2D rb;
-    
-    
+    public int health = 1;
 	public List<Sprite> runeInventory;
-
+    public LevelManager levelManager;
+    
 	private Vector2 movement;
     private Door nearbyDoor;
     private RuneLocation nearbyRuneLocation;
@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
     {
         
     }
-
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -27,13 +26,21 @@ public class Player : MonoBehaviour
 		movement.y = Input.GetAxis("Vertical");
 		//rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
 		rb.velocity =  movement * speed * Time.deltaTime;
-	
+        if (rb.velocity != Vector2.zero)
+        {
+            transform.right = rb.velocity;
+        }
 		// Perform action (open doors?  place runes?  push stuff?)
 		if (Input.GetButtonDown("Action"))
 		{
 			Debug.Log("Action button pressed");
 			PerformAction();
 		}
+        
+        if (health <= 0)
+        {
+            levelManager.PlayerDied();
+        }
 	}
 	
     void OnCollisionEnter2D(Collision2D collision)
@@ -44,6 +51,12 @@ public class Player : MonoBehaviour
         if (collidedDoor)
         {
             nearbyDoor = collidedDoor;
+        }
+        
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy)
+        {
+            health -= 1;
         }
     }
     

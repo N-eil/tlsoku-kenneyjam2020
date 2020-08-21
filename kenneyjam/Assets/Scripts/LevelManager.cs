@@ -18,7 +18,6 @@ public class LevelManager : MonoBehaviour
     {
         if (!active) return;
         
-        Debug.Log(runeLocations.Count);
         foreach (RuneLocation location in runeLocations)
         {
             if(location.placed)
@@ -27,16 +26,29 @@ public class LevelManager : MonoBehaviour
                 runeLocations.Remove(location);
             }
         }
-        
         if (runeLocations.Count == 0)
         {
             TriggerWin();
         }
+        
+        
     }
     
     void TriggerWin()
     {
         Debug.Log("You win!");
         active = false;
+    }
+    
+    void TriggerLoss(string message)
+    {
+        Debug.Log("You lose!  " + message);
+        active = false;
+        
+    }
+    
+    public void PlayerDied()
+    {
+        TriggerLoss("You ran out of HP");
     }
 }
