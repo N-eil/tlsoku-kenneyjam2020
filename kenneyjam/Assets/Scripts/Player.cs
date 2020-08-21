@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 		rb.velocity =  movement * speed * Time.deltaTime;
 	
 		// Perform action (open doors?  place runes?  push stuff?)
-		if (Input.GetButton("Action"))
+		if (Input.GetButtonDown("Action"))
 		{
 			Debug.Log("Action button pressed");
 			PerformAction();
