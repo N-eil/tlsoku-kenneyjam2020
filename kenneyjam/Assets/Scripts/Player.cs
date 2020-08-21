@@ -23,6 +23,13 @@ public class Player : MonoBehaviour
         runeInventory.Add(Instantiate(availableRunes[0]));
         runeInventory.Add(Instantiate(availableRunes[0]));
         levelManager.hudManager.FillRunes(runeInventory);
+
+        foreach (Rune rune in runeInventory)
+        {
+            if (rune is HealthRune)
+                health++;
+        }
+
     }
     // Update is called once per frame
     void FixedUpdate()
