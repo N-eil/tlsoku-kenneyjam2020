@@ -9,6 +9,6 @@ namespace Assets.Scripts.Runes
 {
     public class SpeedRune : Rune
     {
-        public override string Description { get => "zoom"; }
+        public override string Description { get => "Increases movespeed by 20%."; }
     }
 }

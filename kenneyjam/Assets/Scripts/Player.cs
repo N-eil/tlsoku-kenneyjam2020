@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using Assets.Scripts.Runes;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +9,7 @@ public class Player : MonoBehaviour
 	public float speed = 25f;
 	public Rigidbody2D rb;
     public int health = 1;
-	public List<Sprite> runeInventory;
+	public List<Rune> runeInventory;
     public LevelManager levelManager;
     
 	private Vector2 movement;
@@ -24,8 +26,14 @@ public class Player : MonoBehaviour
 		// Movement along both axes
 		movement.x = Input.GetAxis("Horizontal");
 		movement.y = Input.GetAxis("Vertical");
-		//rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
-		rb.velocity =  movement * speed * Time.deltaTime;
+        float speedModifier = 1;
+        foreach(Rune rune in runeInventory)
+        {
+            if (rune is SpeedRune)
+                speedModifier *= 1.2f;
+        }
+
+		rb.velocity =  movement * speed * Time.deltaTime * speedModifier;
         if (rb.velocity != Vector2.zero)
         {
             transform.right = rb.velocity;
@@ -115,7 +123,7 @@ public class Player : MonoBehaviour
 		{
             if (!nearbyRuneLocation.placed)
             {
-                nearbyRuneLocation.PlaceRune(runeInventory[0]);
+                nearbyRuneLocation.PlaceRune(runeInventory[0].Sprite);
                 nearbyRuneLocation.placed = true;
                 runeInventory.RemoveAt(0);
             }
