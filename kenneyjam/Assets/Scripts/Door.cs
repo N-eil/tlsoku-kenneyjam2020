@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,17 +12,17 @@ public class Door : MonoBehaviour
         _collider = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ToggleDoor()
     {
         opened = !opened;
         Debug.Log((opened ? "Opened" : "Closed") + " door " + this);
-        //_collider.enabled = !opened;
         _collider.isTrigger = opened;
+        if (opened)
+            gameObject.layer = Constants.DEFAULT_LAYER;
+        else
+            gameObject.layer = Constants.BLOCKERS_LAYER;
+
+        // recalculate pathfinding graph
+        AstarPath.active.Scan();
     }
 }
