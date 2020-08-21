@@ -18,7 +18,11 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        foreach (Rune rune in runeInventory)
+        {
+            if (rune is HealthRune)
+                health++;
+        }
     }
     // Update is called once per frame
     void FixedUpdate()
