@@ -5,11 +5,10 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public bool opened = false;
-
-    // Start is called before the first frame update
+    private BoxCollider2D _collider;
     void Start()
     {
-        
+        _collider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -22,6 +21,7 @@ public class Door : MonoBehaviour
     {
         opened = !opened;
         Debug.Log((opened ? "Opened" : "Closed") + " door " + this);
-
+        //_collider.enabled = !opened;
+        _collider.isTrigger = opened;
     }
 }

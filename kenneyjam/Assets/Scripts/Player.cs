@@ -66,7 +66,12 @@ public class Player : MonoBehaviour
         if (collidedRuneLocation)
         {
             nearbyRuneLocation = collidedRuneLocation;
-        }   
+        }
+        Door door = collider.gameObject.GetComponent<Door>();
+        if (door)
+        {
+            nearbyDoor = door;
+        }
     }
     
     void OnTriggerExit2D(Collider2D collider)
@@ -76,11 +81,14 @@ public class Player : MonoBehaviour
         if (collidedRuneLocation && collidedRuneLocation == nearbyRuneLocation)
         {
             nearbyRuneLocation = null;
-        }     
+        }
+        Door door = collider.gameObject.GetComponent<Door>();
+        if (door && door == nearbyDoor)
+        {
+            nearbyDoor = null;
+        }
     }
-    
 
-    
 	private void PerformAction()
 	{
 		// Interact with doors
