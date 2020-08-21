@@ -17,21 +17,25 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         if (!active) return;
-        
+
+        List<RuneLocation> toRemove = new List<RuneLocation>();
         foreach (RuneLocation location in runeLocations)
         {
             if(location.placed)
             {
                 Debug.Log("Removing rune locations");
-                runeLocations.Remove(location);
+                toRemove.Add(location);
             }
         }
+        foreach (RuneLocation location in toRemove)
+        {
+            runeLocations.Remove(location);
+        }
+
         if (runeLocations.Count == 0)
         {
             TriggerWin();
         }
-        
-        
     }
     
     void TriggerWin()
