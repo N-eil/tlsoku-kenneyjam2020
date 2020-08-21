@@ -18,9 +18,32 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+		// Movement along both axes
 		movement.x = Input.GetAxis("Horizontal");
 		movement.y = Input.GetAxis("Vertical");
-				
 		rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
-    }
+    
+	
+		// Perform action (open doors?  place runes?  push stuff?)
+		if (Input.GetButton("Action"))
+		{
+			Debug.Log("Action button pressed");
+			PerformAction();
+		}
+	}
+	
+	private void PerformAction()
+	{
+		// Interact with doors
+		if (false /* check for nearby doors */)
+		{
+			
+		}
+		
+		// Place runes
+		if (false /* when in a rune placement spot */)
+		{
+			
+		}
+	}
 }
