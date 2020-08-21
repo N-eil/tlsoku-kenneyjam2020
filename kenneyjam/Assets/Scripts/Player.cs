@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
 	public float speed = 25f;
 	public Rigidbody2D rb;
     public int health = 1;
-	public List<Rune> runeInventory;
+	public List<Rune> availableRunes;
+    public List<Rune> runeInventory;
     public LevelManager levelManager;
     
 	private Vector2 movement;
@@ -18,7 +19,10 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        runeInventory.Add(Instantiate(availableRunes[0]));
+        runeInventory.Add(Instantiate(availableRunes[0]));
+        runeInventory.Add(Instantiate(availableRunes[0]));
+        levelManager.hudManager.FillRunes(runeInventory);
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -126,6 +130,7 @@ public class Player : MonoBehaviour
                 nearbyRuneLocation.PlaceRune(runeInventory[0].Sprite);
                 nearbyRuneLocation.placed = true;
                 runeInventory.RemoveAt(0);
+                levelManager.hudManager.RemoveRune();
             }
         }
 	}
