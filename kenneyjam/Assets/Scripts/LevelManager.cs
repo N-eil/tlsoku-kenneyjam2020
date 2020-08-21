@@ -53,6 +53,7 @@ public class LevelManager : MonoBehaviour
     
     public void PlayerDied()
     {
-        TriggerLoss("You ran out of HP");
+        if (active)
+            TriggerLoss("You ran out of HP");
     }
 }
