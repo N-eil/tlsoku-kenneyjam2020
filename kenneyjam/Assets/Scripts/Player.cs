@@ -6,10 +6,13 @@ public class Player : MonoBehaviour
 {
 	public float speed = 25f;
 	public Rigidbody2D rb;
-	
-	
+    
+    
+	public List<Sprite> runeInventory;
+
 	private Vector2 movement;
     private Door nearbyDoor;
+    private RuneLocation nearbyRuneLocation;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +38,7 @@ public class Player : MonoBehaviour
 	
     void OnCollisionEnter2D(Collision2D collision)
     {
-//        Debug.Log("collision");
-//        Debug.Log(collision.gameObject);
-        
+        Debug.Log("collided with trigger");
         //Door collision
         Door collidedDoor = collision.gameObject.GetComponent<Door>();
         if (collidedDoor)
@@ -48,9 +49,7 @@ public class Player : MonoBehaviour
     
     void OnCollisionExit2D(Collision2D collision)
     {
-//        Debug.Log("no more collision");
-//        Debug.Log(collision.gameObject);
-        
+
         //Door collision
         Door collidedDoor = collision.gameObject.GetComponent<Door>();
         if (collidedDoor && collidedDoor == nearbyDoor)
@@ -58,6 +57,29 @@ public class Player : MonoBehaviour
             nearbyDoor = null;
         }   
     }
+    
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log("collided with trigger");
+        //Rune placement collision
+        RuneLocation collidedRuneLocation = collider.gameObject.GetComponent<RuneLocation>();
+        if (collidedRuneLocation)
+        {
+            nearbyRuneLocation = collidedRuneLocation;
+        }   
+    }
+    
+    void OnTriggerExit2D(Collider2D collider)
+    {     
+        //Rune placement collision
+        RuneLocation collidedRuneLocation = collider.gameObject.GetComponent<RuneLocation>();
+        if (collidedRuneLocation && collidedRuneLocation == nearbyRuneLocation)
+        {
+            nearbyRuneLocation = null;
+        }     
+    }
+    
+
     
 	private void PerformAction()
 	{
@@ -68,9 +90,16 @@ public class Player : MonoBehaviour
 		}
 		
 		// Place runes
-		if (false /* when in a rune placement spot */)
+		if (nearbyRuneLocation)
 		{
-			
-		}
+            if (!nearbyRuneLocation.placed)
+            {
+                nearbyRuneLocation.PlaceRune(runeInventory[0]);
+                nearbyRuneLocation.placed = true;
+                runeInventory.RemoveAt(0);
+            }
+        }
 	}
+    
+    
 }
