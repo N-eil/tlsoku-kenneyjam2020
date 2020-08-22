@@ -7,13 +7,14 @@ public class HUDManager : MonoBehaviour
 {
     
     public List<Image> displayedRunes;
+    public List<Outline> displayedOutlines;
     public Image blankRune;
     
-    private int activeRuneIndex = 0;
+    private int _activeRuneIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        SelectRune(_activeRuneIndex);
     }
 
     // Update is called once per frame
@@ -41,11 +42,18 @@ public class HUDManager : MonoBehaviour
     
     public void RemoveRune()
     {
-        displayedRunes[activeRuneIndex].sprite = blankRune.sprite;
-        displayedRunes.RemoveAt(activeRuneIndex);
-        if (activeRuneIndex >= displayedRunes.Count)
+        displayedRunes[_activeRuneIndex].sprite = blankRune.sprite;
+        displayedRunes.RemoveAt(_activeRuneIndex);
+        if (_activeRuneIndex >= displayedRunes.Count)
         {
-            activeRuneIndex = displayedRunes.Count - 1;
+            _activeRuneIndex = displayedRunes.Count - 1;
         }
+    }
+    
+    public void SelectRune(int index)
+    {
+        displayedOutlines[_activeRuneIndex].enabled = false;
+        _activeRuneIndex = index;
+        displayedOutlines[_activeRuneIndex].enabled = true;
     }
 }

@@ -20,22 +20,24 @@ public class Player : MonoBehaviour
     private RuneLocation nearbyRuneLocation;
     private float _width;
     private float _height;
+    
+    private int _selectedRuneIndex = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
-
+        Debug.Log(-1 % 3);
         Transform spriteChild = transform.GetChild(0);
         _visionCircles[0] = spriteChild.GetChild(0);
-        _visionCircles[1] = spriteChild.GetChild(1);
-        _width = ((RectTransform)spriteChild).rect.width;
-        _height = ((RectTransform)spriteChild).rect.height; 
-        
+        _visionCircles[1] = spriteChild.GetChild(1);   
 
         runeInventory.Add(Instantiate(availableRunes[0]));
         runeInventory.Add(Instantiate(availableRunes[0]));
         runeInventory.Add(Instantiate(availableRunes[0]));
         levelManager.hudManager.FillRunes(runeInventory);
 
+        Debug.Log(runeInventory.Count);
+        
         foreach (Rune rune in runeInventory)
         {
             if (rune is HealthRune)
@@ -55,6 +57,16 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Action"))
         {
             PerformAction();
+        }
+        
+        if (Input.GetButtonDown("CycleLeft"))
+        {
+            SelectRune((_selectedRuneIndex - 1 + runeInventory.Count)  % runeInventory.Count);
+        }
+        
+        if (Input.GetButtonDown("CycleRight"))
+        {
+            SelectRune((_selectedRuneIndex + 1 + runeInventory.Count)  % runeInventory.Count);
         }
     }
 
@@ -148,23 +160,6 @@ public class Player : MonoBehaviour
 		if (nearbyDoor)
 		{
 			nearbyDoor.ToggleDoor();
-            
-            if (!nearbyDoor.opened)
-            {
-                float pushDistance = 0f;
-                if (nearbyDoor.horizontal)
-                {
-                    pushDistance = (nearbyDoor.pushDistance + (_width / 2));
-                    if (transform.position.x < nearbyDoor.transform.position.x)  pushDistance *= -1;
-                    transform.position = new Vector3(transform.position.x + pushDistance , transform.position.y, transform.position.z);
-                }
-                else
-                {
-                    pushDistance = (nearbyDoor.pushDistance + (_height / 2));
-                    if (transform.position.y < nearbyDoor.transform.position.y)  pushDistance *= -1;
-                    transform.position = new Vector3(transform.position.x, transform.position.y + pushDistance, transform.position.z);
-                }
-            }
 		}
 		
 		// Place runes
@@ -172,10 +167,10 @@ public class Player : MonoBehaviour
 		{
             if (!nearbyRuneLocation.placed)
             {
-                nearbyRuneLocation.PlaceRune(runeInventory[0].Sprite);
-                if (runeInventory[0] is HealthRune && health > 1)
+                nearbyRuneLocation.PlaceRune(runeInventory[_selectedRuneIndex].Sprite);
+                if (runeInventory[_selectedRuneIndex] is HealthRune && health > 1)
                     health = 1;
-                else if (runeInventory[0] is VisionRune)
+                else if (runeInventory[_selectedRuneIndex] is VisionRune)
                 {
                     Vector3 v = _visionCircles[0].transform.localScale;
                     _visionCircles[0].transform.localScale = new Vector3(v.x - Constants.VISION_RUNE_INCREASE, v.y - Constants.VISION_RUNE_INCREASE, v.z);
@@ -183,11 +178,16 @@ public class Player : MonoBehaviour
                     _visionCircles[1].transform.localScale = new Vector3(v.x - Constants.VISION_RUNE_INCREASE, v.y - Constants.VISION_RUNE_INCREASE, v.z);
                 }
                 nearbyRuneLocation.placed = true;
-                runeInventory.RemoveAt(0);
+                runeInventory.RemoveAt(_selectedRuneIndex);
                 levelManager.hudManager.RemoveRune();
             }
         }
 	}
     
+    void SelectRune(int index)
+    {
+        _selectedRuneIndex = index;
+        levelManager.hudManager.SelectRune(index);
+    }
     
 }

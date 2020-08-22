@@ -7,7 +7,6 @@ public class Door : MonoBehaviour
 {
     public bool opened = false;
     public bool horizontal;
-    public float pushDistance = 0f;
     
     private BoxCollider2D _collider;
     private Transform _spriteTransform;
@@ -23,12 +22,10 @@ public class Door : MonoBehaviour
         if (horizontal)
         {
             _closedDoorPosition = new Vector3(0.55f,0,0);
-            pushDistance = ((RectTransform)_spriteTransform).rect.width / 2;
         }
         else
         {
             _closedDoorPosition = new Vector3(0,0.55f,0);
-            pushDistance = ((RectTransform)_spriteTransform).rect.height / 2;
         }
     }
 
