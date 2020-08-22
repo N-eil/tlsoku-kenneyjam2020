@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 5463298634787509152}
   - component: {fileID: 8230277898369253841}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Chaser
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a3a81bc640f894581f228290135ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ViewAngle: 65
+  ViewAngle: 60
 --- !u!114 &240475380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.5
+  m_Radius: 4
 --- !u!212 &8230277898369253841
 SpriteRenderer:
   m_ObjectHideFlags: 0

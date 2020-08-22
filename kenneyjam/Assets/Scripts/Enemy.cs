@@ -24,8 +24,10 @@ public class Enemy : MonoBehaviour
         {
             _aiDestinationSetter.target = _targetPlayer;
         }
-
-        transform.right = _aiPath.desiredVelocity;
+        if (_aiPath.desiredVelocity != Vector3.zero)
+        {
+            transform.right = _aiPath.desiredVelocity;
+        }
     }
 
     private bool CanPlayerBeSeen()
@@ -38,12 +40,7 @@ public class Enemy : MonoBehaviour
         Vector2 directionToPlayer = _targetPlayer.position - transform.position;
         Debug.DrawLine(transform.position, _targetPlayer.position, Color.magenta);
 
-        Debug.Log("Direction: " + directionToPlayer);
-        Debug.Log("Player: " + _targetPlayer.position);
-        Debug.Log("Self: " + transform.right);
-
         float angle = Vector3.Angle(transform.right, directionToPlayer);
-        Debug.Log("angle " + angle);
         return angle < ViewAngle;
     }
 
