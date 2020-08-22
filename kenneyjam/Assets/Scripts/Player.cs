@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 	public List<Rune> availableRunes;
     public List<Rune> runeInventory;
     public LevelManager levelManager;
+
+    private Transform[] _visionCircles = new Transform[2];
     
 	private Vector2 movement;
     private Door nearbyDoor;
@@ -19,6 +21,10 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Transform spriteChild = transform.GetChild(0);
+        _visionCircles[0] = spriteChild.GetChild(0);
+        _visionCircles[1] = spriteChild.GetChild(1);
+
         runeInventory.Add(Instantiate(availableRunes[0]));
         runeInventory.Add(Instantiate(availableRunes[0]));
         runeInventory.Add(Instantiate(availableRunes[0]));
@@ -28,6 +34,13 @@ public class Player : MonoBehaviour
         {
             if (rune is HealthRune)
                 health++;
+            else if (rune is VisionRune)
+            {
+                Vector3 v = _visionCircles[0].transform.localScale;
+                _visionCircles[0].transform.localScale = new Vector3(v.x + Constants.VISION_RUNE_INCREASE, v.y + Constants.VISION_RUNE_INCREASE, v.z);
+                v = _visionCircles[1].transform.localScale;
+                _visionCircles[1].transform.localScale = new Vector3(v.x + Constants.VISION_RUNE_INCREASE, v.y + Constants.VISION_RUNE_INCREASE, v.z);
+            }
         }
     }
 
@@ -156,6 +169,13 @@ public class Player : MonoBehaviour
                 nearbyRuneLocation.PlaceRune(runeInventory[0].Sprite);
                 if (runeInventory[0] is HealthRune && health > 1)
                     health = 1;
+                else if (runeInventory[0] is VisionRune)
+                {
+                    Vector3 v = _visionCircles[0].transform.localScale;
+                    _visionCircles[0].transform.localScale = new Vector3(v.x - Constants.VISION_RUNE_INCREASE, v.y - Constants.VISION_RUNE_INCREASE, v.z);
+                    v = _visionCircles[1].transform.localScale;
+                    _visionCircles[1].transform.localScale = new Vector3(v.x - Constants.VISION_RUNE_INCREASE, v.y - Constants.VISION_RUNE_INCREASE, v.z);
+                }
                 nearbyRuneLocation.placed = true;
                 runeInventory.RemoveAt(0);
                 levelManager.hudManager.RemoveRune();
