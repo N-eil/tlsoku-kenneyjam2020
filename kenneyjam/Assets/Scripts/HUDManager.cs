@@ -47,12 +47,13 @@ public class HUDManager : MonoBehaviour
         
         displayedOutlines[_activeRuneIndex].enabled = false;
         displayedOutlines.RemoveAt(_activeRuneIndex);
-        if (_activeRuneIndex >= displayedRunes.Count)
+        if (displayedRunes.Count != 0 && _activeRuneIndex >= displayedRunes.Count)
         {
             _activeRuneIndex = displayedRunes.Count - 1;
+            SelectRune(_activeRuneIndex);
         }
         
-        SelectRune(_activeRuneIndex);
+
     }
     
     public void SelectRune(int index)

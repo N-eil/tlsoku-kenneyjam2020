@@ -179,6 +179,10 @@ public class Player : MonoBehaviour
                 }
                 nearbyRuneLocation.placed = true;
                 runeInventory.RemoveAt(_selectedRuneIndex);
+                if (_selectedRuneIndex >= runeInventory.Count)
+                {
+                    _selectedRuneIndex = runeInventory.Count -1;
+                }
                 levelManager.hudManager.RemoveRune();
             }
         }
