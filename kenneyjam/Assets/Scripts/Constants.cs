@@ -10,5 +10,7 @@ namespace Assets.Scripts
     {
         public static int DEFAULT_LAYER = 0;
         public static int BLOCKERS_LAYER = 8;
+        public static string PLAYER_TAG = "Player";
+        public static string ENEMY_TAG = "Enemy";
     }
 }
