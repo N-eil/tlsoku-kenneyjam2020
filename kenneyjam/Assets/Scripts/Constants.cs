@@ -8,9 +8,11 @@ namespace Assets.Scripts
 {
     public class Constants
     {
-        public static int DEFAULT_LAYER = 0;
-        public static int BLOCKERS_LAYER = 8;
-        public static string PLAYER_TAG = "Player";
-        public static string ENEMY_TAG = "Enemy";
+        public const int DEFAULT_LAYER = 0;
+        public const int BLOCKERS_LAYER = 8;
+        public const string PLAYER_TAG = "Player";
+        public const string ENEMY_TAG = "Enemy";
+
+        public const float VISION_RUNE_INCREASE = 1;
     }
 }
