@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
     private Transform _targetPlayer;
     private AIDestinationSetter _aiDestinationSetter;
     private AIPath _aiPath;
-    private Transform spriteTransform;
 
     [Range(0, 360)]
     public float ViewAngle = 65;
@@ -17,7 +16,6 @@ public class Enemy : MonoBehaviour
     {
         _aiDestinationSetter = GetComponent<AIDestinationSetter>();
         _aiPath = GetComponent<AIPath>();
-        spriteTransform = gameObject.transform.GetChild(0);
     }
 
     private void FixedUpdate()
