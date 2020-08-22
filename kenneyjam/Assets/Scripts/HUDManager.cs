@@ -7,6 +7,9 @@ public class HUDManager : MonoBehaviour
 {
     
     public List<Image> displayedRunes;
+    public Image blankRune;
+    
+    private int activeRuneIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,11 @@ public class HUDManager : MonoBehaviour
     
     public void RemoveRune()
     {
-        transform.Find("Rune1").gameObject.GetComponent<Image>().enabled = false;
+        displayedRunes[activeRuneIndex].sprite = blankRune.sprite;
+        displayedRunes.RemoveAt(activeRuneIndex);
+        if (activeRuneIndex >= displayedRunes.Count)
+        {
+            activeRuneIndex = displayedRunes.Count - 1;
+        }
     }
 }
