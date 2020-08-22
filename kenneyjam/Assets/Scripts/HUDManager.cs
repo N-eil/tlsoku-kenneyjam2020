@@ -44,10 +44,15 @@ public class HUDManager : MonoBehaviour
     {
         displayedRunes[_activeRuneIndex].sprite = blankRune.sprite;
         displayedRunes.RemoveAt(_activeRuneIndex);
+        
+        displayedOutlines[_activeRuneIndex].enabled = false;
+        displayedOutlines.RemoveAt(_activeRuneIndex);
         if (_activeRuneIndex >= displayedRunes.Count)
         {
             _activeRuneIndex = displayedRunes.Count - 1;
         }
+        
+        SelectRune(_activeRuneIndex);
     }
     
     public void SelectRune(int index)
