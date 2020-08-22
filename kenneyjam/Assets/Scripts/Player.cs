@@ -135,6 +135,8 @@ public class Player : MonoBehaviour
             if (!nearbyRuneLocation.placed)
             {
                 nearbyRuneLocation.PlaceRune(runeInventory[0].Sprite);
+                if (runeInventory[0] is HealthRune && health > 1)
+                    health = 1;
                 nearbyRuneLocation.placed = true;
                 runeInventory.RemoveAt(0);
                 levelManager.hudManager.RemoveRune();
