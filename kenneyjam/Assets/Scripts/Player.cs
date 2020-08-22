@@ -129,6 +129,23 @@ public class Player : MonoBehaviour
 		if (nearbyDoor)
 		{
 			nearbyDoor.ToggleDoor();
+            
+            if (!nearbyDoor.opened)
+            {
+                float pushDistance = 0f;
+                if (nearbyDoor.horizontal)
+                {
+                    pushDistance = (((RectTransform)nearbyDoor.transform).rect.width / 2 + ((RectTransform)transform).rect.width / 2);
+                    if (transform.position.x < nearbyDoor.transform.position.x)  pushDistance *= -1;
+                    transform.position = new Vector3(transform.position.x + pushDistance , transform.position.y, transform.position.z);
+                }
+                else
+                {
+                    pushDistance = (((RectTransform)nearbyDoor.transform).rect.height / 2 + ((RectTransform)transform).rect.height / 2);
+                    if (transform.position.y < nearbyDoor.transform.position.y)  pushDistance *= -1;
+                    transform.position = new Vector3(transform.position.x, transform.position.y + pushDistance, transform.position.z);
+                }
+            }
 		}
 		
 		// Place runes

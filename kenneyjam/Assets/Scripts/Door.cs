@@ -6,6 +6,8 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public bool opened = false;
+    public bool horizontal;
+    
     private BoxCollider2D _collider;
     void Start()
     {
