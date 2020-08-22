@@ -6,26 +6,24 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public bool opened = false;
-    public bool horizontal;
     
     private BoxCollider2D _collider;
     private Transform _spriteTransform;
     private SpriteRenderer _spriteRenderer;
     
-    private Vector3 _closedDoorPosition;
+    private Vector3 _openDoorPosition;
     void Start()
     {
 
         _collider = GetComponent<BoxCollider2D>();
         _spriteTransform = gameObject.transform.GetChild(0);
         _spriteRenderer = _spriteTransform.gameObject.GetComponent<SpriteRenderer>();
-        if (horizontal)
+        _openDoorPosition = new Vector3(0,0.55f,0);
+        
+        if (opened)
         {
-            _closedDoorPosition = new Vector3(0.55f,0,0);
-        }
-        else
-        {
-            _closedDoorPosition = new Vector3(0,0.55f,0);
+            opened = !opened;
+            ToggleDoor();
         }
     }
 
@@ -38,7 +36,7 @@ public class Door : MonoBehaviour
         if (opened)
         {
             gameObject.layer = Constants.DEFAULT_LAYER;
-            _spriteTransform.localPosition = _closedDoorPosition;
+            _spriteTransform.localPosition = _openDoorPosition;
             _spriteRenderer.sortingLayerName = "Floor";
         }
         else
