@@ -54,3 +54,6 @@ TagManager:
   - name: Player
     uniqueID: 1587318667
     locked: 0
+  - name: FogOfWar
+    uniqueID: 4229331515
+    locked: 0
