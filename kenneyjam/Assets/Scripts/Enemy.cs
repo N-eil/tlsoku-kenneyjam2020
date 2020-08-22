@@ -7,14 +7,16 @@ public class Enemy : MonoBehaviour
 {
     private Transform _targetPlayer;
     private AIDestinationSetter _aiDestinationSetter;
+    private AIPath _aiPath;
     private Transform spriteTransform;
-    
+
     [Range(0, 360)]
     public float ViewAngle = 65;
 
     private void Start()
     {
         _aiDestinationSetter = GetComponent<AIDestinationSetter>();
+        _aiPath = GetComponent<AIPath>();
         spriteTransform = gameObject.transform.GetChild(0);
     }
 
@@ -24,6 +26,8 @@ public class Enemy : MonoBehaviour
         {
             _aiDestinationSetter.target = _targetPlayer;
         }
+
+        transform.right = _aiPath.desiredVelocity;
     }
 
     private bool CanPlayerBeSeen()
@@ -39,7 +43,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("Direction: " + directionToPlayer);
         Debug.Log("Player: " + _targetPlayer.position);
         Debug.Log("Self: " + transform.right);
-        
+
         float angle = Vector3.Angle(transform.right, directionToPlayer);
         Debug.Log("angle " + angle);
         return angle < ViewAngle;
