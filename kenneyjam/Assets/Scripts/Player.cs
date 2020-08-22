@@ -29,8 +29,16 @@ public class Player : MonoBehaviour
             if (rune is HealthRune)
                 health++;
         }
-
     }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Action"))
+        {
+            PerformAction();
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -49,12 +57,6 @@ public class Player : MonoBehaviour
         {
             transform.right = rb.velocity;
         }
-		// Perform action (open doors?  place runes?  push stuff?)
-		if (Input.GetButtonDown("Action"))
-		{
-			Debug.Log("Action button pressed");
-			PerformAction();
-		}
         
         if (health <= 0)
         {
