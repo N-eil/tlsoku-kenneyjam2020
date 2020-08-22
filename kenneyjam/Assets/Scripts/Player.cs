@@ -16,9 +16,14 @@ public class Player : MonoBehaviour
 	private Vector2 movement;
     private Door nearbyDoor;
     private RuneLocation nearbyRuneLocation;
+    private float _width;
+    private float _height;
     // Start is called before the first frame update
     void Start()
     {
+        _width = ((RectTransform)gameObject.transform.GetChild(0)).rect.width;
+        _height = ((RectTransform)gameObject.transform.GetChild(0)).rect.height; 
+        
         runeInventory.Add(Instantiate(availableRunes[0]));
         runeInventory.Add(Instantiate(availableRunes[0]));
         runeInventory.Add(Instantiate(availableRunes[0]));
@@ -135,13 +140,13 @@ public class Player : MonoBehaviour
                 float pushDistance = 0f;
                 if (nearbyDoor.horizontal)
                 {
-                    pushDistance = (((RectTransform)nearbyDoor.transform).rect.width / 2 + ((RectTransform)transform).rect.width / 2);
+                    pushDistance = (nearbyDoor.pushDistance + (_width / 2));
                     if (transform.position.x < nearbyDoor.transform.position.x)  pushDistance *= -1;
                     transform.position = new Vector3(transform.position.x + pushDistance , transform.position.y, transform.position.z);
                 }
                 else
                 {
-                    pushDistance = (((RectTransform)nearbyDoor.transform).rect.height / 2 + ((RectTransform)transform).rect.height / 2);
+                    pushDistance = (nearbyDoor.pushDistance + (_height / 2));
                     if (transform.position.y < nearbyDoor.transform.position.y)  pushDistance *= -1;
                     transform.position = new Vector3(transform.position.x, transform.position.y + pushDistance, transform.position.z);
                 }
