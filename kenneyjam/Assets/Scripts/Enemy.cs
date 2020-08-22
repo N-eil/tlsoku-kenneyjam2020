@@ -7,13 +7,15 @@ public class Enemy : MonoBehaviour
 {
     private Transform _targetPlayer;
     private AIDestinationSetter _aiDestinationSetter;
-
+    private Transform spriteTransform;
+    
     [Range(0, 360)]
     public float ViewAngle = 65;
 
     private void Start()
     {
         _aiDestinationSetter = GetComponent<AIDestinationSetter>();
+        spriteTransform = gameObject.transform.GetChild(0);
     }
 
     private void FixedUpdate()
@@ -34,8 +36,12 @@ public class Enemy : MonoBehaviour
         Vector2 directionToPlayer = _targetPlayer.position - transform.position;
         Debug.DrawLine(transform.position, _targetPlayer.position, Color.magenta);
 
-        float angle = Vector3.Angle(transform.position, directionToPlayer);
-
+        Debug.Log("Direction: " + directionToPlayer);
+        Debug.Log("Player: " + _targetPlayer.position);
+        Debug.Log("Self: " + transform.right);
+        
+        float angle = Vector3.Angle(transform.right, directionToPlayer);
+        Debug.Log("angle " + angle);
         return angle < ViewAngle;
     }
 
