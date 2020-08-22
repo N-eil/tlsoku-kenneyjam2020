@@ -15,8 +15,8 @@ TagManager:
   - 
   - 
   - Blockers
-  - FogOfWarMain
-  - FogOfWarSecondary
+  - 
+  - 
   - 
   - 
   - 
@@ -55,5 +55,5 @@ TagManager:
     uniqueID: 1587318667
     locked: 0
   - name: FogOfWar
-    uniqueID: 4229331515
+    uniqueID: 2880346491
     locked: 0
