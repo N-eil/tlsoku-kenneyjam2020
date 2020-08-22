@@ -8,6 +8,7 @@ public class HUDManager : MonoBehaviour
     
     public List<Image> displayedRunes;
     public List<Outline> displayedOutlines;
+    public List<Image> displayedLives;
     public Image blankRune;
     
     private int _activeRuneIndex = 0;
@@ -35,9 +36,12 @@ public class HUDManager : MonoBehaviour
         }
     }
     
-    public void RemoveLife()
+    public void SetLives(int remaining)
     {
-        
+        for (int i = 0; i < displayedLives.Count - remaining; i++)
+        {
+            displayedLives[i].enabled = false;
+        }
     }
     
     public void RemoveRune()
@@ -52,9 +56,7 @@ public class HUDManager : MonoBehaviour
             _activeRuneIndex = displayedRunes.Count - 1;
             SelectRune(_activeRuneIndex);
         }
-        
-
-    }
+    }    
     
     public void SelectRune(int index)
     {

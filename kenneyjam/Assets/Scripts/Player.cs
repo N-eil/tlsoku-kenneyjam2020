@@ -18,11 +18,11 @@ public class Player : MonoBehaviour
 	private Vector2 movement;
     private Door nearbyDoor;
     private RuneLocation nearbyRuneLocation;
-    private float _width;
-    private float _height;
-    
     private int _selectedRuneIndex = 0;
     
+    private int invulnFrameTotal = 90;
+    private int invulnFrameCount = 0;
+    private int _maxHealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
         runeInventory.Add(Instantiate(availableRunes[0]));
         runeInventory.Add(Instantiate(availableRunes[0]));
         runeInventory.Add(Instantiate(availableRunes[0]));
+        runeInventory.Add(Instantiate(availableRunes[1]));
+        runeInventory.Add(Instantiate(availableRunes[2]));
         levelManager.hudManager.FillRunes(runeInventory);
 
         Debug.Log(runeInventory.Count);
@@ -50,6 +52,9 @@ public class Player : MonoBehaviour
                 _visionCircles[1].transform.localScale = new Vector3(v.x + Constants.VISION_RUNE_INCREASE, v.y + Constants.VISION_RUNE_INCREASE, v.z);
             }
         }
+        
+        _maxHealth = health;
+        levelManager.hudManager.SetLives(health);
     }
 
     private void Update()
@@ -89,6 +94,11 @@ public class Player : MonoBehaviour
             transform.right = rb.velocity;
         }
         
+        if (invulnFrameCount != 0)
+        {
+            invulnFrameCount--;
+        }
+        
         if (health <= 0)
         {
             levelManager.PlayerDied();
@@ -106,9 +116,11 @@ public class Player : MonoBehaviour
         }
         
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-        if (enemy)
+        if (invulnFrameCount == 0 && enemy)
         {
             health -= 1;
+            invulnFrameCount = invulnFrameTotal;
+            levelManager.hudManager.SetLives(health);
         }
     }
     
@@ -168,8 +180,15 @@ public class Player : MonoBehaviour
             if (!nearbyRuneLocation.placed)
             {
                 nearbyRuneLocation.PlaceRune(runeInventory[_selectedRuneIndex].Sprite);
-                if (runeInventory[_selectedRuneIndex] is HealthRune && health > 1)
-                    health = 1;
+                if (runeInventory[_selectedRuneIndex] is HealthRune)
+                {
+                    _maxHealth -= 1;
+                    if (health > _maxHealth)
+                    {
+                        health = _maxHealth;
+                        levelManager.hudManager.SetLives(health);
+                    }
+                }
                 else if (runeInventory[_selectedRuneIndex] is VisionRune)
                 {
                     Vector3 v = _visionCircles[0].transform.localScale;
