@@ -65,6 +65,7 @@ public class SettingsManager : MonoBehaviour
 
     public void SaveSettings()
     {
+        GameObject.FindGameObjectWithTag(Constants.MUSIC_PLAYER_TAG).GetComponent<MusicPlayer>().PlayButtonClickClip();
         string jsonData = JsonUtility.ToJson(GameSettings, true);
         File.WriteAllText(Application.persistentDataPath + Constants.GAME_SETTINGS_PATH, jsonData);
     }

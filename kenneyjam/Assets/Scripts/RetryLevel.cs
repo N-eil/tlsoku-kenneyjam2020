@@ -8,6 +8,7 @@ public class RetryLevel : MonoBehaviour
 {
     public void StartLevel(int level)
     {
+        GameObject.FindGameObjectWithTag(Constants.MUSIC_PLAYER_TAG).GetComponent<MusicPlayer>().PlayButtonClickClip();
         int levelNumber = PersistentVariables.currentLevel;
         if (level != 0)
         {
