@@ -14,6 +14,7 @@ namespace Assets.Scripts
         public const int BLOCKERS_LAYER = 8;
         public const string PLAYER_TAG = "Player";
         public const string ENEMY_TAG = "Enemy";
+        public const string MUSIC_PLAYER_TAG = "MusicPlayer";
 
         public const float VISION_RUNE_INCREASE = 1;
     }
