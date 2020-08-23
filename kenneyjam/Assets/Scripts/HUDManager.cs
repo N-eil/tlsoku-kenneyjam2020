@@ -12,6 +12,7 @@ public class HUDManager : MonoBehaviour
     public Image blankRune;
     
     private int _activeRuneIndex = 0;
+    public GameObject _winPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,5 +64,10 @@ public class HUDManager : MonoBehaviour
         displayedOutlines[_activeRuneIndex].enabled = false;
         _activeRuneIndex = index;
         displayedOutlines[_activeRuneIndex].enabled = true;
+    }
+    
+    public void DisplayWin()
+    {
+        _winPanel.SetActive(true);
     }
 }

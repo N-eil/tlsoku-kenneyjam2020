@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour
     
     void TriggerWin()
     {
-        Debug.Log("You win!");
+        hudManager.DisplayWin();
         active = false;
     }
     
