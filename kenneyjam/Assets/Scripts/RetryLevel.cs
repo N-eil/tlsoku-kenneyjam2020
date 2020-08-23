@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class RetryLevel : MonoBehaviour
 {
-    public void StartLevel()
+    public void StartLevel(int level)
     {
         int levelNumber = PersistentVariables.currentLevel;
-
+        if (level != 0)
+        {
+            levelNumber = level;
+        }
         if (levelNumber == 1)
         {
             SceneManager.LoadScene(sceneName:"Level1");
