@@ -5562,6 +5562,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47802a69525061544a8a2118d7dc13df, type: 3}
+--- !u!114 &427693490 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4420850588021717173, guid: 47802a69525061544a8a2118d7dc13df,
+    type: 3}
+  m_PrefabInstance: {fileID: 427693489}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceed8ae8cbed3ac4183b6675357394e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &471257757 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 677174298396529381, guid: 7896bd181e9c52646b1f33624ec3ec06,
@@ -7443,6 +7455,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47802a69525061544a8a2118d7dc13df, type: 3}
+--- !u!114 &1115923742 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4420850588021717173, guid: 47802a69525061544a8a2118d7dc13df,
+    type: 3}
+  m_PrefabInstance: {fileID: 1115923741}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceed8ae8cbed3ac4183b6675357394e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1142070909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 677174298396529381, guid: 7896bd181e9c52646b1f33624ec3ec06,
@@ -17575,6 +17599,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 73787324358911224, guid: cd90f4ad347e0394995542a9fb2bbf6e,
         type: 3}
+      propertyPath: runeLocations.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 73787324358911224, guid: cd90f4ad347e0394995542a9fb2bbf6e,
+        type: 3}
       propertyPath: runeLocations.Array.data[0]
       value: 
       objectReference: {fileID: 2022181415}
@@ -17598,6 +17627,16 @@ PrefabInstance:
       propertyPath: levelNumber
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 73787324358911224, guid: cd90f4ad347e0394995542a9fb2bbf6e,
+        type: 3}
+      propertyPath: runeLocations.Array.data[3]
+      value: 
+      objectReference: {fileID: 427693490}
+    - target: {fileID: 73787324358911224, guid: cd90f4ad347e0394995542a9fb2bbf6e,
+        type: 3}
+      propertyPath: runeLocations.Array.data[4]
+      value: 
+      objectReference: {fileID: 1115923742}
     - target: {fileID: 73787324358911230, guid: cd90f4ad347e0394995542a9fb2bbf6e,
         type: 3}
       propertyPath: m_Name
