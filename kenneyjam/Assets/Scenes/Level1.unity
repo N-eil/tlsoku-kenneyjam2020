@@ -17218,6 +17218,11 @@ PrefabInstance:
       propertyPath: hudManager
       value: 
       objectReference: {fileID: 426304341}
+    - target: {fileID: 73787324358911224, guid: cd90f4ad347e0394995542a9fb2bbf6e,
+        type: 3}
+      propertyPath: levelNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 73787324358911230, guid: cd90f4ad347e0394995542a9fb2bbf6e,
         type: 3}
       propertyPath: m_Name

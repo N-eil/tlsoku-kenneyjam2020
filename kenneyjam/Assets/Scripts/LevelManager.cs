@@ -7,12 +7,14 @@ public class LevelManager : MonoBehaviour
 {
     public List<RuneLocation> runeLocations;
     public HUDManager hudManager;
+    public int levelNumber;
     private bool active = false;
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log(runeLocations);
         active = true;
+        Assets.Scripts.PersistentVariables.currentLevel = levelNumber;
     }
 
     // Update is called once per frame

@@ -8,13 +8,16 @@ public class RetryLevel : MonoBehaviour
 {
     public void StartLevel()
     {
-        SceneManager.LoadScene(sceneName:"Level1");
-        StartGameplay();
-    }
+        int levelNumber = PersistentVariables.currentLevel;
 
-    public void StartLevel2()
-    {
-        SceneManager.LoadScene(sceneName: "Level2");
+        if (levelNumber == 1)
+        {
+            SceneManager.LoadScene(sceneName:"Level1");
+        }
+        else if (levelNumber == 2)
+        {
+            SceneManager.LoadScene(sceneName: "Level2");
+        }
         StartGameplay();
     }
 
