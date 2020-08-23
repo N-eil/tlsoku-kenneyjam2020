@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - MusicPlayer
+  - RuneLocation
   layers:
   - Default
   - TransparentFX
@@ -45,6 +46,9 @@ TagManager:
     locked: 0
   - name: Floor
     uniqueID: 3443747481
+    locked: 0
+  - name: Doors
+    uniqueID: 3193364805
     locked: 0
   - name: Blockers
     uniqueID: 2712279455

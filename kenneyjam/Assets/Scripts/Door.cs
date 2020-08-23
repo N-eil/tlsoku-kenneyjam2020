@@ -37,14 +37,11 @@ public class Door : MonoBehaviour
         {
             gameObject.layer = Constants.DEFAULT_LAYER;
             _spriteTransform.localPosition = _openDoorPosition;
-            _spriteRenderer.sortingLayerName = "Blockers";
         }
         else
         {
             gameObject.layer = Constants.BLOCKERS_LAYER;
             _spriteTransform.localPosition = Vector3.zero;
-            _spriteRenderer.sortingLayerName = "Blockers";
-
         }
         // recalculate pathfinding graph
         AstarPath.active.Scan();
