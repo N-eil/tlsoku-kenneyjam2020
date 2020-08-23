@@ -15,7 +15,9 @@ namespace Assets.Scripts
         public const string PLAYER_TAG = "Player";
         public const string ENEMY_TAG = "Enemy";
         public const string RUNE_LOCATION_TAG = "RuneLocation";
-        
+        public const string MUSIC_PLAYER_TAG = "MusicPlayer";
+
+
         public const float VISION_RUNE_INCREASE = 1;
     }
 }

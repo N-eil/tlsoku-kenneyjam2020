@@ -34,6 +34,8 @@ public class SettingsManager : MonoBehaviour
             ResolutionDropdown.options.Add(new Dropdown.OptionData(resolution.ToString()));
         }
 
+        MusicSource = GameObject.FindWithTag(Constants.MUSIC_PLAYER_TAG).GetComponent<AudioSource>();
+
         if (File.Exists(Application.persistentDataPath + Constants.GAME_SETTINGS_PATH))
             LoadSettings();
         else
