@@ -23,7 +23,7 @@ public class PatrolAI : MonoBehaviour
 
     void Update()
     {
-        if (_aiPath.reachedEndOfPath)
+        if (_aiPath.reachedDestination)
         {
             _waypointIndex = (_waypointIndex + 1) % Waypoints.Count;
             _aiDestinationSetter.target = Waypoints[_waypointIndex].transform;
