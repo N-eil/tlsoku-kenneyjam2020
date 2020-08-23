@@ -30,12 +30,13 @@ public class Player : MonoBehaviour
         Transform spriteChild = transform.GetChild(0);
         _visionCircles[0] = spriteChild.GetChild(0);
         _visionCircles[1] = spriteChild.GetChild(1);   
-
+/*
         runeInventory.Add(Instantiate(availableRunes[0]));
         runeInventory.Add(Instantiate(availableRunes[0]));
         runeInventory.Add(Instantiate(availableRunes[0]));
         runeInventory.Add(Instantiate(availableRunes[1]));
         runeInventory.Add(Instantiate(availableRunes[2]));
+*/        
         levelManager.hudManager.FillRunes(runeInventory);
 
         Debug.Log(runeInventory.Count);

@@ -421,7 +421,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1582687841
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -6165,7 +6165,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1582687841
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -16190,7 +16190,7 @@ PrefabInstance:
     - target: {fileID: 284940496585831845, guid: 7f6f0720e9facbc4f8c86d1a7b0d9646,
         type: 3}
       propertyPath: runeInventory.Array.size
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 284940496585831845, guid: 7f6f0720e9facbc4f8c86d1a7b0d9646,
         type: 3}
@@ -16201,17 +16201,17 @@ PrefabInstance:
         type: 3}
       propertyPath: runeInventory.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 83350042}
     - target: {fileID: 284940496585831845, guid: 7f6f0720e9facbc4f8c86d1a7b0d9646,
         type: 3}
       propertyPath: runeInventory.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 83350042}
     - target: {fileID: 284940496585831845, guid: 7f6f0720e9facbc4f8c86d1a7b0d9646,
         type: 3}
       propertyPath: runeInventory.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 369563400}
     - target: {fileID: 284940496585831845, guid: 7f6f0720e9facbc4f8c86d1a7b0d9646,
         type: 3}
       propertyPath: levelManager
@@ -16232,6 +16232,16 @@ PrefabInstance:
       propertyPath: availableRunes.Array.data[2]
       value: 
       objectReference: {fileID: 369563400}
+    - target: {fileID: 284940496585831845, guid: 7f6f0720e9facbc4f8c86d1a7b0d9646,
+        type: 3}
+      propertyPath: runeInventory.Array.data[3]
+      value: 
+      objectReference: {fileID: 104274357}
+    - target: {fileID: 284940496585831845, guid: 7f6f0720e9facbc4f8c86d1a7b0d9646,
+        type: 3}
+      propertyPath: runeInventory.Array.data[4]
+      value: 
+      objectReference: {fileID: 104274357}
     - target: {fileID: 284940496585831865, guid: 7f6f0720e9facbc4f8c86d1a7b0d9646,
         type: 3}
       propertyPath: m_Name
