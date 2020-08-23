@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -53,7 +54,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log("You lose!  " + message);
         active = false;
         SceneManager.LoadScene("GameOver");
-        
+        GameObject.FindGameObjectWithTag(Constants.MUSIC_PLAYER_TAG).GetComponent<MusicPlayer>().PlayGameOverMusic();
     }
     
     public void PlayerDied()
