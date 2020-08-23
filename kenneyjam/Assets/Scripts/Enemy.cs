@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
         foreach (RaycastHit2D hit in hits)
         {
             // enemies can see through other enemies
-            if (hit.transform.tag == Constants.ENEMY_TAG)
+            if (hit.transform.tag == Constants.ENEMY_TAG || hit.transform.tag == Constants.RUNE_LOCATION_TAG)
                 continue;
 
             if (hit.transform.tag != Constants.PLAYER_TAG)
