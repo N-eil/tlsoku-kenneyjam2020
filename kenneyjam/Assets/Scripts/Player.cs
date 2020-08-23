@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private RuneLocation nearbyRuneLocation;
     private int _selectedRuneIndex = 0;
     
-    private int invulnFrameTotal = 90;
+    private int invulnFrameTotal = 75;
     private int invulnFrameCount = 0;
     private int _maxHealth;
     // Start is called before the first frame update
@@ -104,7 +104,18 @@ public class Player : MonoBehaviour
             levelManager.PlayerDied();
         }
 	}
-	
+    
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (invulnFrameCount == 0 && enemy)
+        {
+            health -= 1;
+            invulnFrameCount = invulnFrameTotal;
+            levelManager.hudManager.SetLives(health);
+        }   
+    }
+    
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("collided with trigger");
@@ -113,14 +124,6 @@ public class Player : MonoBehaviour
         if (collidedDoor)
         {
             nearbyDoor = collidedDoor;
-        }
-        
-        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-        if (invulnFrameCount == 0 && enemy)
-        {
-            health -= 1;
-            invulnFrameCount = invulnFrameTotal;
-            levelManager.hudManager.SetLives(health);
         }
     }
     
