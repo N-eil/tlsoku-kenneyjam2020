@@ -33,6 +33,11 @@ public class MusicPlayer : MonoBehaviour
         PlayMusicIfNotAlready(Clips[1]);
     }
 
+    public void PlayGameOverMusic()
+    {
+        PlayMusicIfNotAlready(Clips[2]);
+    }
+
     public void PlayMusicIfNotAlready(AudioClip clip)
     {
         if (_audioSource.clip != clip)

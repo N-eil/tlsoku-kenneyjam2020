@@ -212,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RunePlacementSound: {fileID: 8300000, guid: e731b47af43941742bf2d34ca1fd85aa, type: 3}
   DamageSound: {fileID: 8300000, guid: c6edf53f31784634b9a6cdb991ebeac4, type: 3}
+  DoorSound: {fileID: 8300000, guid: 9bd209786a2ccd64084ef268f3a78d0e, type: 3}
 --- !u!1 &4855067735788409631
 GameObject:
   m_ObjectHideFlags: 0
