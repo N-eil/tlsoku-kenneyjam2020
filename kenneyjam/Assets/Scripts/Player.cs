@@ -178,6 +178,7 @@ public class Player : MonoBehaviour
 		if (nearbyDoor)
 		{
 			nearbyDoor.ToggleDoor();
+            _audioManager.PlayDoorSound();
 		}
 		
 		// Place runes

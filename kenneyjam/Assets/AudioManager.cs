@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public AudioClip RunePlacementSound;
     public AudioClip DamageSound;
+    public AudioClip DoorSound;
 
     private AudioSource _audioSource;
 
@@ -23,6 +24,12 @@ public class AudioManager : MonoBehaviour
     public void PlayDamageSound()
     {
         _audioSource.clip = DamageSound;
+        _audioSource.Play();
+    }
+
+    public void PlayDoorSound()
+    {
+        _audioSource.clip = DoorSound;
         _audioSource.Play();
     }
 }
