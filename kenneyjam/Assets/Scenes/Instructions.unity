@@ -190,9 +190,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'You make a living as a priest specializing in removing curses from people''s
-    homes.  Make your way through the house, placing blessed runes on the marked
-    locations, but watch out for strange cursed monsters!
+  m_Text: 'You make a living specializing in removing curses from people''s homes. 
+    Make your way through the house, placing blessed runes on the marked locations,
+    but watch out for strange cursed monsters!
 
 '
 --- !u!222 &357235543
@@ -809,19 +809,19 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Controls:
 
-    Move with WASD.
+    Move with WASD or the arrow keys.
 
-    Open/Close doors and place runes with
-    left click or J.
+    Open/Close doors
+    and place runes with left click or J.
 
-    Cycle through your rune inventory with Q/E.
+    Cycle through your rune inventory
+    with Q/E.
 
 
 
-    Place
-    all your runes to win the level. But choose the placement order carefully, since
-    placing a rune removes it from your inventory and you no longer benefit from
-    its bonuses.'
+    Place all your runes to win the level. But choose the placement
+    order carefully, since placing a rune removes it from your inventory and you
+    no longer benefit from its bonuses.'
 --- !u!222 &1535724642
 CanvasRenderer:
   m_ObjectHideFlags: 0
