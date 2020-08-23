@@ -37,7 +37,7 @@ public class Door : MonoBehaviour
         {
             gameObject.layer = Constants.DEFAULT_LAYER;
             _spriteTransform.localPosition = _openDoorPosition;
-            _spriteRenderer.sortingLayerName = "Floor";
+            _spriteRenderer.sortingLayerName = "Blockers";
         }
         else
         {
