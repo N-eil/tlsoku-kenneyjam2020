@@ -16,7 +16,7 @@ public class PatrolAI : MonoBehaviour
         _aiPath = GetComponent<AIPath>();
         _aiDestinationSetter = GetComponent<AIDestinationSetter>();
         
-        Waypoints.AddRange(GetComponentsInChildren<EnemyWaypoint>());
+        Waypoints.AddRange(transform.parent.gameObject.GetComponentsInChildren<EnemyWaypoint>());
         if (Waypoints.Count > 0)
             _aiDestinationSetter.target = Waypoints[0].transform;
     }
