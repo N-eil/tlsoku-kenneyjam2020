@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
     private Transform[] _visionCircles = new Transform[2];
 
-    private AudioSource _audioSource;
+    private AudioManager _audioManager;
 	private Vector2 movement;
     private Door nearbyDoor;
     private RuneLocation nearbyRuneLocation;
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
+        _audioManager = GetComponent<AudioManager>();
         Transform spriteChild = transform.GetChild(0);
         _visionCircles[0] = spriteChild.GetChild(0);
         _visionCircles[1] = spriteChild.GetChild(1);   
@@ -115,6 +115,7 @@ public class Player : MonoBehaviour
             health -= 1;
             invulnFrameCount = invulnFrameTotal;
             levelManager.hudManager.SetLives(health);
+            _audioManager.PlayDamageSound();
         }   
     }
     
@@ -209,7 +210,7 @@ public class Player : MonoBehaviour
                 }
                 levelManager.hudManager.RemoveRune();
 
-                _audioSource.Play();
+                _audioManager.PlayRunePlacementSound();
             }
         }
 	}

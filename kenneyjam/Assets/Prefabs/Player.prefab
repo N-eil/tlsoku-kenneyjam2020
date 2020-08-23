@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 284940496585831845}
   - component: {fileID: 284940496025069466}
   - component: {fileID: 1459073953066834355}
+  - component: {fileID: 9030473306765020428}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -111,7 +112,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e731b47af43941742bf2d34ca1fd85aa, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -197,6 +198,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9030473306765020428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284940496585831865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc780319b659014e83ca91f90f7880d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RunePlacementSound: {fileID: 8300000, guid: e731b47af43941742bf2d34ca1fd85aa, type: 3}
+  DamageSound: {fileID: 8300000, guid: c6edf53f31784634b9a6cdb991ebeac4, type: 3}
 --- !u!1 &4855067735788409631
 GameObject:
   m_ObjectHideFlags: 0
